@@ -1,10 +1,13 @@
 import bot from './assets/bot.svg'
 import user from './assets/user.svg'
+import { OPENAI_API_KEY } from '../utils/globalVariables'
 
 const form = document.querySelector('form')
 const chatContainer = document.querySelector('#chat_container')
 
 let loadInterval
+
+console.log(OPENAI_API_KEY)
 
 function loader(element) {
     element.textContent = ''
@@ -86,13 +89,21 @@ const handleSubmit = async (e) => {
     // messageDiv.innerHTML = "..."
     loader(messageDiv)
 
-    const response = await fetch('https://vamgpt.onrender.com', {
+    const response = await fetch('https://api.openai.com/v1/completions', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer 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`
         },
         body: JSON.stringify({
-            prompt: data.get('prompt')
+            // prompt: data.get('prompt')
+            model: "text-davinci-002",
+            prompt: data.get('prompt'),
+            temperature: 0.5,
+            max_tokens: 100,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0
         })
     })
 
@@ -101,14 +112,14 @@ const handleSubmit = async (e) => {
 
     if (response.ok) {
         const data = await response.json();
-        const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
+        const parsedData = data.choices[0].text.trim(); // trims any trailing spaces/'\n' 
 
         typeText(messageDiv, parsedData)
     } else {
         const err = await response.text()
 
         messageDiv.innerHTML = "Something went wrong"
-        alert(err)
+        console.log(err)
     }
 }
 
