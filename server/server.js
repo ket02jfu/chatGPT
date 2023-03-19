@@ -19,7 +19,7 @@ app.use(express.json())
 
 const headers = {
   'Content-Type': 'application/json',
-  'Authorization': `Bearer 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`
+  'Authorization': `Bearer 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`
 };
 
 app.get('/', async (req, res) => {
@@ -35,7 +35,7 @@ app.post('/', async (req, res) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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'
+        'Authorization': 'Bearer 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'
       },
       body: JSON.stringify({
         model: 'text-davinci-003',
