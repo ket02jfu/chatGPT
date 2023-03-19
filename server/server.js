@@ -45,4 +45,4 @@ app.post('/', async (req, res) => {
   }
 })
 
-app.listen(5000, () => console.log('AI server started on https://vam-chatgpt.onrender.com'))
+app.listen(5000, () => console.log('AI server started on https://vamgpt.onrender.com'))
