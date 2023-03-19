@@ -1,14 +1,14 @@
 import express from 'express'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
-import { OPENAI_API_KEY } from '../utils/globalVariables'
+// import { OPENAI_API_KEY } from '../utils/globalVariables'
 
 import { Configuration, OpenAIApi } from 'openai'
 
 dotenv.config()
 
 const configuration = new Configuration({
-  apiKey: OPENAI_API_KEY,
+  apiKey: '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',
 });
 
 const openai = new OpenAIApi(configuration);
@@ -19,7 +19,7 @@ app.use(express.json())
 
 const headers = {
   'Content-Type': 'application/json',
-  'Authorization': `Bearer ${OPENAI_API_KEY}`
+  'Authorization': `Bearer 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`
 };
 
 app.get('/', async (req, res) => {
@@ -35,7 +35,7 @@ app.post('/', async (req, res) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`
+        'Authorization': `Bearer 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`
       },
       body: JSON.stringify({
         model: 'text-davinci-003',

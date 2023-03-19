@@ -1,13 +1,10 @@
 import bot from './assets/bot.svg'
 import user from './assets/user.svg'
-import { OPENAI_API_KEY } from '../utils/globalVariables'
 
 const form = document.querySelector('form')
 const chatContainer = document.querySelector('#chat_container')
 
 let loadInterval
-
-console.log(OPENAI_API_KEY)
 
 function loader(element) {
     element.textContent = ''
@@ -93,7 +90,7 @@ const handleSubmit = async (e) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${OPENAI_API_KEY}`
+            'Authorization': `Bearer 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`
         },
         body: JSON.stringify({
             // prompt: data.get('prompt')
