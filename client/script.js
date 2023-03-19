@@ -93,15 +93,14 @@ const handleSubmit = async (e) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`
+            'Authorization': `Bearer ${OPENAI_API_KEY}`
         },
         body: JSON.stringify({
             // prompt: data.get('prompt')
             model: "text-davinci-003",
             prompt: data.get('prompt'),
-            temperature: 0,
+            temperature: 0.7,
             max_tokens: 3000,
-            top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0
         })
